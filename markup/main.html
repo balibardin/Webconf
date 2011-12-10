@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="en" />
+	<title>Международная научно-практическая конференция	 WebConf09</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	
+
+
+<script src="js/jquery-1.2.6.min.js" type="text/javascript"></script>
+
+<script src="js/jquery.livequery.pack.js" type="text/javascript"></script>
+<script src="js/jquery.ajaxify.js" type="text/javascript"></script>
+<script src="js/jquery.history.fixed.js" type="text/javascript"></script>
+<script src="js/jquery.metadata.min.js" type="text/javascript"></script>
+<script src="js/jquery.scrollTo-min.js" type="text/javascript"></script>
+<script src="js/jquery.localscroll-1.2.7-min.js" type="text/javascript"></script>
+
+<script type="text/javascript">   
+	     $(document).ready(function() {  	     		 
+	     		 // mark current item in top-level menu
+	     		 function markContent(hash) {
+	     		 	// unmark previous
+	     		 	$("ul.current").removeClass("current").addClass("select");
+	     		 	$("ul.sub_active").removeClass("sub_active").addClass("sub");
+	     		 	
+	     		 	// mark current
+	     		 	path = "ul.select:has(li > ul.sub > li > a[rel="+ hash+"])";
+	     		 	$(path).removeClass("select").addClass("current");
+	     		 	$("ul.current > li > ul.sub").removeClass("sub").addClass("sub_active");
+	     		 	
+	     		 }  
+	     		 
+	     		 // clicks on table of content links
+	     		 $("a.table").livequery(function() { 
+	     		      $(this).click(function(){		 			
+ 							 $.localScroll({
+ 							 lazy: true
+ 							 });
+ 							 
+					
+	     		 	  });
+	     		 });
+	     		 
+	     		 // clicks for separate pages 
+	     		 $('.ajaxify').livequery(function() { 
+	     		   $(this).ajaxify({
+	     		  	  target: false,
+	     		  	  tagToload:{
+	     		  	  	    '#tableofcontent > *':'#tableofcontent',
+	     		  	        '#center > *':'#center '						    
+			                
+	                   },
+			          loading_target:'#center',
+	     		  	  loading_img:'img/ajaxify/loading.gif', 
+	     		  	  loadHash:'attr:rel',	     		  	  
+	     		  	  onSuccess:function(options,data) {
+	     		  	    document.title = $("title", data).text();
+	     		  	    markContent(this.hash);	     		  	  	
+	     		  	  }
+	     		   });
+	     		 });   
+	     		  
+	     		
+	     });
+	</script>	
+</head>
+<body>
+<div id="main">
+
+<div class="head">
+	<div class="headcontent"><div class="w1"></div>
+		<a href="/" id="logo"><img src="img/logo.gif"  alt="WEB CONF 09" /></a>
+		<div>
+			<img src="img/webconf09.gif"  alt="WEB CONF 09" />
+		</div>
+	</div>
+</div>
+<div id="content">
+	<div class="menu">
+	<div id="nav">
+		<ul class="current">
+			<li><a href=""><b>Главная</b>
+				<!--[if IE 7]><!--></a><!--<![endif]--><!--[if lte IE 6]><table><tr><td><![endif]-->
+				<ul class="sub_active">
+					<li><a href="main.html"></a></li>
+				</ul>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+			</li>
+		</ul>
+	
+		
+		<!-- ul class="select">
+			<li><a href=""><b>Регистрация</b></a></li>
+		</ul>
+		<ul class="sub">
+					<li><a class="ajaxify" href="registration.html">регистрация</a></li>
+					<li><a class="ajaxify" href="place.html">место проведения</a></li>
+					<li><a class="ajaxify" href="howtoreach.html">отели и дорога</a></li>					
+		</ul-->
+		
+		
+		<ul class="select">
+			<li><a href=""><b>Конференция</b>
+				<!--[if IE 7]><!--></a><!--<![endif]--><!--[if lte IE 6]><table><tr><td><![endif]-->
+				<ul class="sub">
+				    <li><a class="ajaxify" href="place.html">место проведения</a></li>
+					<li><a class="ajaxify" href="howtoreach.html">отели и дорога</a></li>
+					<li><a class="ajaxify" href="program.html">общее расписание</a></li>
+					<li><a class="ajaxify" href="program-per-section.html">расписание по секциям</a></li>
+					<li><a class="ajaxify" href="participants.html">участники</a></li>
+					<li><a class="ajaxify" href="seminars.html">семинары</a></li>			 	 
+				</ul>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+			</li>
+		</ul>
+
+		
+		<ul class="select">
+			<li><a href=""><b>Контакты</b>
+				<!--[if IE 7]><!--></a><!--<![endif]--><!--[if lte IE 6]><table><tr><td><![endif]-->
+				<ul class="sub">
+					<li><a class="ajaxify" href="contacts.html">контакты</a></li>
+					<!-- li><a class="ajaxify" href="news.html">новости</a></li-->
+					<li><a class="ajaxify" href="socialnetworks.html">соц. сети</a></li>
+					<!-- li><a class="ajaxify" href="forum.html">форум</a></li-->
+				</ul>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+			</li>
+		</ul>
+		
+		<ul class="select">
+			<li><a href=""><b>Спонсоры</b>
+				<!--[if IE 7]><!--></a><!--<![endif]--><!--[if lte IE 6]><table><tr><td><![endif]-->
+				<ul class="sub">
+					<li><a class="ajaxify" href="sponsors-abilities.html">возможности для спонсоров</a></li>
+					<li><a class="ajaxify" href="sponsors-list.html">список спонсоров и партнеров</a></li>					
+				</ul>
+				<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+			</li>
+		</ul>
+		
+		
+	</div>
+	</div>
+
+	
+	<div id="text">
+		<div id="left-side">
+			<h2><span>Содержание</span></h2>
+			<ul>
+					<li><a href="#general">Общая информация</a></li>
+					<li><a href="#section">Информация о секциях</a></li>
+					<li><a href="#participation">Участие в конференции</a></li>
+					<li><a href="#contacts">Контакты</a></li>					
+			</ul> 
+		</div>
+		
+		<div id="wrapper">
+			<div id="right-side">
+				<h2><span>Генеральный спонсор</span></h2>
+				<div class="logopartners">					
+					<img src="img/logo/empty.gif" alt="Your place"/>					
+				</div>
+				<h2><span>Информационные спонсоры</span></h2>
+				<div class="logopartners">					
+					<img src="img/logo/empty.gif" alt=""/>					
+				</div>
+				<h2><span>Партнеры</span></h2>
+			</div>
+			
+			<div id="center">
+				<h2 id="general"><span>Общая информация</span></h2>
+				<p>Международная научно-практическая  конференция  «Веб-программирование и Интернет-технологии (WebConf09)» будет проводиться на базе Белорусского Государственного Университета (Беларусь, Минск) 8-10 Июня 2009 г.</p>
+				<p> Предполагается работа следующих секций конференции:
+				<ul>
+					<li>Веб-дизайн</li>
+					<li>Веб-программирование</li>
+					<li>Веб-технологии</li>
+					<li>Веб и образование</li>
+					<li>Алгоритмы веб</li>
+					<li>Компьютерное моделирование и  компьютерная математика</li>
+					<li>Веб и общество</li>
+				</ul>
+				</p>
+				<p>
+				Планируемое число участников конференции -  200 человек. </p>
+				
+				<p>В рамках секции возможна организация круглых столов, семинаров и т.д. Заявку на проведение таких мероприятий необходимо предоставить до начала проведения конференции. </p>
+				
+				<h2 id="section"><span>Информация о секциях</span></h2>
+				<p>
+				Предлагаем ознакомиться с предполагаемыми направлениями работы секций. 
+					<ul>
+					<li>В рамках секции «Веб-дизайн» планируется обсудить подходы, проекты и стандарты в области дизайна и эргономики веб-интерфейсов, а также методологии и особенности их проектирования, разработки, тестирования. Существующие веб-проекты, которые используют специализированные решения в области человеко-компьютерного взаимодействия (например, безкликовые технологии), могут быть также рассмотрены в рамках данной секции.</li>  
+					<li>В рамках секции «Веб-программирование» предполагается обсудить проекты, стандарты, рекомендации по эффективному использованию специализированных технических инструментов и систем, связанных с анализом, разработкой и обеспечением функционирования веб-систем. В частности, предполагается рассмотреть опыт построения различных веб-порталов и веб-систем; средства генерации и предоставления контента для интенсивно посещаемых сайтов («высоконагруженных» веб-систем); конкретные подходы и новые технологии, призванные облегчить построения сложных веб-систем (порталов) или повысить эффективность работы пользователей с такими системами. К этой тематике примыкают различные технологии разработки и проектирования веб-клиентов (javascript и ajax, flash и др).</li> 
+					<li>В рамках секции «Веб-технологии» будут затронуты различные подходы в организации, безопасности, интеграции веб-систем, а также тематика представления знаний. В частности, возможно обсуждение таких тем, как веб-данные (LinkedData), Интернет-сервисы (в ракурсах Web 2.0 и Web 3.0), инициатив DataPortability, семантического веба, различных вопросов, связанных с аспектами децентрализации, единого входа, безопасности пользовательских данных, приватности в Интернете.</li> 
+					<li>Секция «Веб и образование» будет ориентирована на обсуждение подходов и проблем в преподавании веб-технологий для студентов и школьников, а также в рамках различных образовательных центров. В эту же секцию могут быть заявлены доклады, касающиеся использования элементов веб-технологий в образовательных процессах (тестирование, дистанционное обучение и т. п.).</li>  
+					<li>Секция «Алгоритмы Веб» будет посвящена различным проектам и подходам, использующим математический аппарат (в частности, дискретную математику, математическую кибернетику) для решения тех или иных задач в веб, или проблемам создания специализированных технических решений в рамках веб-проектов.</li> 
+					<li>Секция «Компьютерное моделирование и компьютерная математика» будет посвящена подходам и технологиям в компьютерном моделировании и методах компьютерной математики, используемых как в области информационных технологий, так и в веб.</li> 
+					<li>В рамках секции «Веб и общество» планируется обсудить 4 основные группы проблем: юзабилити (организация контента, функциональность дизайна, эффективность навигации, тестирование); веб-аудитория (online- и offline-методы измерения и изучения; организация маркетинговых и социологических опросов в сети, потребление веб-продукта); Web 2.0 (форматы, контент, аудитория, потребле-ние, использование в целях маркетинга); веб-журналистика.</li>  
+					</ul>								
+				</p>
+				
+			<h2 id="participation"><span>Участие в конференции</span></h2>				
+			<p>Приглашаем представителей Вашей организации принять участие в проведении конференции. Возможный статус: для индивидуальных участников — пленарный доклад (40 мин), доклад на секции (15 мин), слушатель; для организаций — представление информационных стендов, размещение рекламы в материалах конференции, распространение материалов на бумажных и электронных носителях.</p> 
+			<p>Заявочный взнос для участия в конференции: для индивидуальных участников, выступающих с докладами, — 10 у.е. (по курсу Национального банка Республики Беларусь); для организаций — от 50 у.е. (в зависимости от объема предоставляемых услуг).</p>
+			<p>Предполагается издание сборника трудов конференции. Объем представляемых материалов не должен превышать: для секционных докладов — 2 стр. формата А4; для пленарных докладов — 5 стр. формата А4. Образец оформления тезисов можно будет получить на сайте конференции.</p>
+			<p>Участие в конференции может быть и заочным (с публикацией материалов в сборнике трудов при условии внесения заявочного взноса).</p>
+			<p>Уточненная информация по условиям участия в работе конференции будет выслана после получения предварительной заявки.</p>
+			<p>Официальные языки конференции — белорусский, русский, английский. Планируется рассмотреть возможность обеспечения докладов на английском языке синхронным переводом.</p>			
+			<p>Официальный язык конференции - русский, для иностранных участников – английский. Планируется  рассмотреть возможность обеспечения английских докладов синхронным переводом.</p> 
+		     
+			<h2 id="contacts"><span>Контакты</span></h2>			
+			<p>Электронный адрес для предварительной заявки, писем и вопросов: <a href="mailto:webconf09@gmail.com">mailto:webconf09@gmail.com</a>.
+		    <p>Контактный телефон: 017-226-55-39 (заведующий кафедрой численных методов и программирования механико-математического факультета БГУ В. С. Романчик).</p>
+				
+			 
+				
+				 
+	
+			</div>
+		</div>
+	</div>
+
+
+</div>
+</div>
+ 
+<div id="footer">
+	<div class="ftcontent">
+		<!-- div>
+			<a href="">главная</a> 
+			<span>регистрация</span>
+			<a href="">конференция</a>
+			<a href="">контакты</a>
+			<a href="">спонсоры</a>
+			<a href="">другое</a>
+		</div-->
+		<!--  div>Тел. 200-00-00, факс: 222-22-22</div-->
+		<div><a href="http://www.hiqo-solutions.com">Дизайн HiQo Solutions</a></div>
+		<!-- div><a href="http://www.w-farm.com">Technology assistance by W-FARM</a></div-->
+	</div>
+</div>
+<div class="w4"><div class="w2"></div><div class="w3"></div></div>
+</body>
+</html>

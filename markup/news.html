@@ -1,0 +1,79 @@
+<!DOCTYPE 
+    html
+    PUBLIC
+    "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>
+      WebConf 09 / Место проведения
+    </title>
+  </head>
+  <body>
+    <div id="center">
+    
+<form>
+            <input type='text' style="width:500px;" name='txtFeed' value='http://digg.com/rss/index.xml' />
+            <button onclick='GetFeed(this.form.txtFeed.value);return false;'>Get Feed</button>
+        </form>
+        <div class='result'>
+
+            <!-- Form to enter the URL of a feed -->
+            <!-- Template to display in case of error -->
+            <div id='FeedError' template='true' style="display: none;">
+                <strong>Feed Error</strong> : ${error.message}
+            </div>
+            <!-- Template to use for feed results -->
+            <div id='Feeds' template='true' style="display: none;">
+                <div context='feed'>
+
+                    <strong>Title:</strong> <a href='${link}'>${title}</a><br />
+                    <strong>Description:</strong> ${description}<br />
+                    <strong>Author:</strong> ${author}<br />
+                    <div context='entries'>
+
+                        <br />
+                        <strong><a href='${link}' target='_new'>${title}</a></strong><br />
+                        <em>${publishedDate}</em>
+                        <br />
+                        ${content}<br />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+ <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+
+    <script type="text/javascript" src="js/JSRepeater.js"></script>
+
+    <script language='javascript'>
+google.load("feeds", "1"); //Loads version 1 of the AJAX Feed API
+var rpt;
+
+function Initialise(){
+rpt = new jsRepeater();
+GetFeed('http://digg.com/rss/index.xml');
+}
+function GetFeed(url){
+    var feedpointer=new google.feeds.Feed(url) 
+    feedpointer.load(display); 
+}
+function display(results){
+    if ((results.error != null) && (results.error != undefined))
+    {
+        document.getElementById("Feeds").style.display = "none";
+        document.getElementById("FeedError").style.display = "block";
+        rpt.bindTemplate('FeedError', results);
+    } else {
+        document.getElementById("Feeds").style.display = "block";
+        document.getElementById("FeedError").style.display = "none";
+        rpt.bindTemplate('Feeds', results);
+    }
+}
+</script>
+ 
+    </div>
+  </body>
+</html>
