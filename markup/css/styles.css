@@ -195,7 +195,7 @@ div.menu {position:relative; padding: 0px 0 60px 280px;}
 
 #nav .select a:hover, #nav .select li:hover a {cursor:pointer; background: url(../img/menu.gif) no-repeat right center;}
 #nav .select li .sub li a, #nav .sub li a {background:none;}
-#nav .select li.lastchild a{background:none;}
+#nav .select li.lastchild a, #nav .select li.lastchild a:hover, #nav .select li:hover a {background:none;}
 #nav .select a:hover b, #nav .select li:hover a b {color:#d7004d;}
 
 #nav .sub {display:none; }
